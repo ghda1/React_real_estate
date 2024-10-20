@@ -3,32 +3,38 @@ import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 const AddProperty = (props) => {
   const { onHandleAddProperty } = props;
-  const [title, setTitle] = useState("");
-  const [price, setPrice] = useState(0);
-  const [image, setImage] = useState("");
-  const [location, setLocation] = useState("");
+  const [property, setProperty] = useState({
+    title: "",
+    price: 0,
+    image: "",
+    location: "",
+  });
 
+  const handleChange = (event) => {
+    setProperty((prevState) => {
+      return { ...prevState, [event.target.name]: event.target.value };
+    });
+  };
   const submitHandler = (event) => {
     event.preventDefault();
     const newProperty = {
       id: uuidv4(),
-      image:  image ,
-      title: title ,
-      location:  location ,
-      price:  price ,
+      image: property.image,
+      title: property.title,
+      location: property.location,
+      price: property.price,
     };
     onHandleAddProperty(newProperty);
     restValues();
   };
-  const titleHandler = (event) => setTitle(event.target.value);
-  const priceHandler = (event) => setPrice(event.target.value);
-  const imageHandler = (event) => setImage(event.target.value);
-  const locationHandler = (event) => setLocation(event.target.value);
+
   const restValues = () => {
-    setTitle("");
-    setImage("");
-    setPrice(0);
-    setLocation("");
+    setProperty({
+      title: "",
+      price: 0,
+      image: "",
+      location: "",
+    });
   };
   return (
     <>
@@ -39,10 +45,10 @@ const AddProperty = (props) => {
             Image:
             <input
               type="text"
-              name=""
+              name="image"
               id="image"
-              onChange={imageHandler}
-              value={image}
+              onChange={handleChange}
+              value={property.image}
               required
             ></input>
           </label>
@@ -52,10 +58,10 @@ const AddProperty = (props) => {
             Title:
             <input
               type="text"
-              name=""
+              name="title"
               id="title"
-              onChange={titleHandler}
-              value={title}
+              onChange={handleChange}
+              value={property.title}
               required
             ></input>
           </label>
@@ -65,10 +71,10 @@ const AddProperty = (props) => {
             Location:
             <input
               type="text"
-              name=""
+              name="location"
               id="location"
-              onChange={locationHandler}
-              value={location}
+              onChange={handleChange}
+              value={property.location}
               required
             ></input>
           </label>
@@ -78,10 +84,10 @@ const AddProperty = (props) => {
             Price:
             <input
               type="number"
-              name=""
+              name="price"
               id="price"
-              onChange={priceHandler}
-              value={price}
+              onChange={handleChange}
+              value={property.price}
               required
             ></input>
           </label>
