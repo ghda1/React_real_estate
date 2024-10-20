@@ -5,12 +5,11 @@
 section {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; 
+  justify-content: space-between;
   gap: 10px;
   margin: 20px auto;
-  max-width: 1200px; 
+  max-width: 1200px;
 }
-
 
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -20,13 +19,12 @@ section {
   width: 400px;
   padding: 16px;
   text-align: center;
-  border-radius: 8px; 
+  border-radius: 8px;
 }
 
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
-
 
 @media (max-width: 900px) {
   .card {
@@ -36,11 +34,12 @@ section {
 
 @media (max-width: 600px) {
   .card {
-    width: 100%; 
+    width: 100%;
   }
 }
 
-.addPropert-form {
+.addPropert-form,
+.updatePropert-form {
   max-width: 400px;
   padding: 20px;
   margin: 0 auto;
@@ -50,11 +49,13 @@ section {
   font-family: Arial, sans-serif;
 }
 
-.addPropert-form div {
+.addPropert-form div,
+.updatePropert-form div {
   margin-bottom: 15px;
 }
 
-.addPropert-form label {
+.addPropert-form label,
+.updatePropert-form label {
   display: block;
   font-weight: bold;
   margin-bottom: 5px;
@@ -62,7 +63,9 @@ section {
 }
 
 .addPropert-form input[type="text"],
-.addPropert-form input[type="number"] {
+.addPropert-form input[type="number"],
+.updatePropert-form input[type="text"],
+.updatePropert-form input[type="number"] {
   width: 90%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -72,12 +75,15 @@ section {
 }
 
 .addPropert-form input[type="text"]:focus,
-.addPropert-form input[type="number"]:focus {
+.addPropert-form input[type="number"]:focus,
+.updatePropert-form[type="text"]:focus,
+.updatePropert-form[type="number"]:focus {
   border-color: #dbd3d3;
   outline: none;
 }
 
-.addPropert-form button {
+.addPropert-form button,
+.updatePropert-form button {
   width: 95%;
   padding: 10px;
   background-color: #b7b7b7;
@@ -89,7 +95,8 @@ section {
   transition: background-color 0.3s;
 }
 
-.addPropert-form button:hover {
+.addPropert-form button:hover,
+.updatePropert-form button:hover {
   background-color: #9c9b9b;
 }
 

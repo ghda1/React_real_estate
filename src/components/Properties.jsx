@@ -3,7 +3,7 @@ import React from "react";
 import Property from "./Property";
 
 const Properties = (props) => {
-  const { properties, onHandleDeleteProperty } = props;
+  const { properties, onHandleDeleteProperty, onHandleUpdateProperty } = props;
 
   return (
     <section>
@@ -11,6 +11,7 @@ const Properties = (props) => {
         return (
           <Property
             onHandleDeleteProperty={onHandleDeleteProperty}
+            onHandleUpdateProperty={onHandleUpdateProperty}
             property={property}
             key={property.id}
           />
