@@ -1,4 +1,4 @@
-import React, { isValidElement, useState } from "react";
+import React, { useState } from "react";
 
 import { v4 as uuidv4 } from "uuid";
 const AddProperty = (props) => {
@@ -81,7 +81,7 @@ const AddProperty = (props) => {
               required
             ></input>
           </label>
-          {errors.image && <p>{errors.image}</p>}
+          {errors.image && <p className="errors">{errors.image}</p>}
         </div>
         <div id="title-input">
           <label htmlFor="title">
@@ -95,7 +95,7 @@ const AddProperty = (props) => {
               required
             ></input>
           </label>
-          {errors.title && <p>{errors.title}</p>}
+          {errors.title && <p className="errors">{errors.title}</p>}
         </div>
         <div id="location-input">
           <label htmlFor="location">
@@ -109,7 +109,7 @@ const AddProperty = (props) => {
               required
             ></input>
           </label>
-          {errors.location && <p>{errors.location}</p>}
+          {errors.location && <p className="errors">{errors.location}</p>}
         </div>
         <div id="price-input">
           <label htmlFor="price">
@@ -123,7 +123,7 @@ const AddProperty = (props) => {
               required
             ></input>
           </label>
-          {errors.price && <p>{errors.price}</p>}
+          {errors.price && <p className="errors">{errors.price}</p>}
         </div>
         <button type="submit">Add Property</button>
       </form>
