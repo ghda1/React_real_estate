@@ -1,17 +1,17 @@
 #price {
   color: rgb(208, 116, 116);
 }
-/* Flexbox layout for the card container */
+
 section {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; /* Distributes space evenly between cards */
-  gap: 10px; /* Adds space between the cards */
+  justify-content: space-between; 
+  gap: 10px;
   margin: 20px auto;
-  max-width: 1200px; /* Ensures the section doesn't grow too wide */
+  max-width: 1200px; 
 }
 
-/* Ensure the card styling remains the same */
+
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
@@ -20,24 +20,23 @@ section {
   width: 400px;
   padding: 16px;
   text-align: center;
-  border-radius: 8px; /* Optional: Add rounded corners to the card */
+  border-radius: 8px; 
 }
 
-/* On mouse-over, add a deeper shadow */
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive layout for smaller screens */
+
 @media (max-width: 900px) {
   .card {
-    width: calc(50% - 20px); /* Two cards per row on medium-sized screens */
+    width: calc(50% - 20px);
   }
 }
 
 @media (max-width: 600px) {
   .card {
-    width: 100%; /* One card per row on small screens */
+    width: 100%; 
   }
 }
 
