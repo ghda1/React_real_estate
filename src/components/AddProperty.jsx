@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { isValidElement, useState } from "react";
 
 import { v4 as uuidv4 } from "uuid";
 const AddProperty = (props) => {
@@ -15,17 +15,44 @@ const AddProperty = (props) => {
       return { ...prevState, [event.target.name]: event.target.value };
     });
   };
+
+  const [errors, setErrors] = useState({});
+
+  const isValidateForm = () => {
+    const newErrors = {};
+    if (!property.title.trim()) newErrors.title = "Property title is required";
+    if (property.title.length < 10)
+      newErrors.title = "Property title should be at least 10 characters long";
+    if (!property.price) newErrors.price = "Property price is required";
+    if (!property.price || parseFloat(property.price) <= 0)
+      newErrors.price = "Price must be a positive number and greater than zero";
+    if (!property.image) newErrors.image = "Please upload a property image";
+    if (!property.location.trim())
+      newErrors.location = "Property location is required";
+    if (property.location.length < 10)
+      newErrors.location =
+        "Property location should be at least 10 characters long";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const submitHandler = (event) => {
     event.preventDefault();
-    const newProperty = {
-      id: uuidv4(),
-      image: property.image,
-      title: property.title,
-      location: property.location,
-      price: property.price,
-    };
-    onHandleAddProperty(newProperty);
-    restValues();
+
+    if (isValidateForm()) {
+      const newProperty = {
+        id: uuidv4(),
+        image: property.image,
+        title: property.title,
+        location: property.location,
+        price: property.price,
+      };
+      onHandleAddProperty(newProperty);
+      restValues();
+    } else {
+      console.log("errors!");
+    }
   };
 
   const restValues = () => {
@@ -35,7 +62,9 @@ const AddProperty = (props) => {
       image: "",
       location: "",
     });
+    setErrors({});
   };
+
   return (
     <>
       <h2>Add New Property: </h2>
@@ -52,6 +81,7 @@ const AddProperty = (props) => {
               required
             ></input>
           </label>
+          {errors.image && <p>{errors.image}</p>}
         </div>
         <div id="title-input">
           <label htmlFor="title">
@@ -65,6 +95,7 @@ const AddProperty = (props) => {
               required
             ></input>
           </label>
+          {errors.title && <p>{errors.title}</p>}
         </div>
         <div id="location-input">
           <label htmlFor="location">
@@ -78,6 +109,7 @@ const AddProperty = (props) => {
               required
             ></input>
           </label>
+          {errors.location && <p>{errors.location}</p>}
         </div>
         <div id="price-input">
           <label htmlFor="price">
@@ -91,6 +123,7 @@ const AddProperty = (props) => {
               required
             ></input>
           </label>
+          {errors.price && <p>{errors.price}</p>}
         </div>
         <button type="submit">Add Property</button>
       </form>
