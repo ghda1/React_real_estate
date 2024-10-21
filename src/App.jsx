@@ -27,7 +27,6 @@ const App = () => {
     setUpdatePropertyData(updatePropertyData);
   };
   const handleUpdateDataProperty = (updateObject) => {
-    console.log("handleUpdateDataProperty in app ", updateObject);
     const findProperty = allPropertiesData.find(
       (property) => property.id === updateObject.id
     );
@@ -37,7 +36,6 @@ const App = () => {
       findProperty.price = updateObject.price;
       findProperty.title = updateObject.title;
     }
-
     setProperty(allPropertiesData);
   };
 

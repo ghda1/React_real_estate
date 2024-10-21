@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import { v4 as uuidv4 } from "uuid";
 const AddProperty = (props) => {
+
   const { onHandleAddProperty } = props;
   const [property, setProperty] = useState({
     title: "",
@@ -21,17 +22,17 @@ const AddProperty = (props) => {
   const isValidateForm = () => {
     const newErrors = {};
     if (!property.title.trim()) newErrors.title = "Property title is required";
-    if (property.title.length < 10)
-      newErrors.title = "Property title should be at least 10 characters long";
+    if (property.title.length < 5)
+      newErrors.title = "Property title should be at least 5 characters long";
     if (!property.price) newErrors.price = "Property price is required";
     if (!property.price || parseFloat(property.price) <= 0)
       newErrors.price = "Price must be a positive number and greater than zero";
     if (!property.image) newErrors.image = "Please upload a property image";
     if (!property.location.trim())
       newErrors.location = "Property location is required";
-    if (property.location.length < 10)
+    if (property.location.length < 5)
       newErrors.location =
-        "Property location should be at least 10 characters long";
+        "Property location should be at least 5 characters long";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
