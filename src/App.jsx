@@ -31,23 +31,14 @@ const App = () => {
     const findProperty = allPropertiesData.find(
       (property) => property.id === updateObject.id
     );
-    // if (findProperty) {
-    //   findProperty.image = updatePropertyData.image;
-    //   findProperty.location = updatePropertyData.location;
-    //   findProperty.price = updatePropertyData.price;
-    //   findProperty.title = updatePropertyData.title;
-    // }
-
-    // setProperty((prevProperty) => {
-    //   return [...prevProperty, findProperty];
-    // });
-
     if (findProperty) {
-      updatePropertyData.image = updateObject.image;
-      updatePropertyData.location = updateObject.location;
-      updatePropertyData.price = updateObject.price;
-      updatePropertyData.title = updateObject.title;
+      findProperty.image = updateObject.image;
+      findProperty.location = updateObject.location;
+      findProperty.price = updateObject.price;
+      findProperty.title = updateObject.title;
     }
+
+    setProperty(allPropertiesData);
   };
 
   return (

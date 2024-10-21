@@ -5,20 +5,12 @@ const UpdateProperty = (props) => {
     props;
   const { id, image, title, price, location } = updateProperty;
 
-  const [property, setProperty] = useState({
-    title: "",
-    price: "",
-    image: "",
-    location: "",
-  });
-
   const handleChange = (event) => {
     setUpdatePropertyData((prevState) => {
       return { ...prevState, [event.target.name]: event.target.value };
     });
   };
 
-  console.log("update property ", updateProperty);
   const [errors, setErrors] = useState({});
 
   const isValidateForm = () => {
@@ -55,13 +47,15 @@ const UpdateProperty = (props) => {
     }
   };
   const restValues = () => {
-    setProperty({
+    setUpdatePropertyData({
       title: "",
       price: 0,
       image: "",
       location: "",
     });
+    setErrors({});
   };
+
   return (
     <>
       <h2>Update Property: </h2>
