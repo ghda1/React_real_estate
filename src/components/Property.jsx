@@ -18,8 +18,15 @@ const Property = (props) => {
         <h2>Title: {title}</h2>
         <h3>Location: {location}</h3>
         <h3 id="price">Price: {price}</h3>
-        <button onClick={() => handleDeleteProperty(id)}>Delete</button>
-        <button onClick={() => handleUpdateProperty(property)}>Update</button>
+        <button className="delete-btn" onClick={() => handleDeleteProperty(id)}>
+          Delete
+        </button>
+        <button
+          className="update-btn"
+          onClick={() => handleUpdateProperty(property)}
+        >
+          Update
+        </button>
       </article>
     </Card>
   );

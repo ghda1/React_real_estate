@@ -50,8 +50,6 @@ const AddProperty = (props) => {
       };
       onHandleAddProperty(newProperty);
       restValues();
-    } else {
-      console.log("errors!");
     }
   };
 
