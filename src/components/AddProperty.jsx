@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-
 import { v4 as uuidv4 } from "uuid";
-const AddProperty = (props) => {
 
+import uploadImageToCloudinary from "../utility/UploadImage";
+
+const AddProperty = (props) => {
   const { onHandleAddProperty } = props;
   const [property, setProperty] = useState({
     title: "",
@@ -14,6 +15,12 @@ const AddProperty = (props) => {
   const handleChange = (event) => {
     setProperty((prevState) => {
       return { ...prevState, [event.target.name]: event.target.value };
+    });
+  };
+
+  const handleImageChange = (event) => {
+    setProperty((prevState) => {
+      return { ...prevState, [event.target.name]: event.target.files[0] };
     });
   };
 
@@ -38,13 +45,14 @@ const AddProperty = (props) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
 
     if (isValidateForm()) {
+      let imageUrl = await uploadImageToCloudinary(property.image);
       const newProperty = {
         id: uuidv4(),
-        image: property.image,
+        image: imageUrl,
         title: property.title,
         location: property.location,
         price: property.price,
@@ -72,11 +80,12 @@ const AddProperty = (props) => {
           <label htmlFor="image">
             Image:
             <input
-              type="text"
+              type="file"
               name="image"
               id="image"
-              onChange={handleChange}
-              value={property.image}
+              onChange={handleImageChange}
+              // value={property.image}
+              accept="image/*"
               required
             ></input>
           </label>

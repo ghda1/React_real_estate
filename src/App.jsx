@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 
 import Properties from "./components/Properties";
 import propertiesData from "./data";
@@ -22,6 +22,7 @@ const App = () => {
   };
 
   const [updatePropertyData, setUpdatePropertyData] = useState(null);
+
 
   const handleUpdateProperty = (updatePropertyData) => {
     setUpdatePropertyData(updatePropertyData);

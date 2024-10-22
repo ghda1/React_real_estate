@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import uploadImageToCloudinary from "../utility/UploadImage";
 
 const UpdateProperty = (props) => {
   const { updateProperty, onHandleUpdatePropertyData, setUpdatePropertyData } =
@@ -8,6 +9,12 @@ const UpdateProperty = (props) => {
   const handleChange = (event) => {
     setUpdatePropertyData((prevState) => {
       return { ...prevState, [event.target.name]: event.target.value };
+    });
+  };
+
+  const handleImageChange = (event) => {
+    setUpdatePropertyData((prevState) => {
+      return { ...prevState, [event.target.name]: event.target.files[0] };
     });
   };
 
@@ -31,13 +38,14 @@ const UpdateProperty = (props) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
 
     if (isValidateForm()) {
+      let imageUrl = await uploadImageToCloudinary(image);
       const updatedProperty = {
         id: id,
-        image: image,
+        image: imageUrl,
         title: title,
         location: location,
         price: price,
@@ -64,11 +72,11 @@ const UpdateProperty = (props) => {
           <label htmlFor="image">
             Image:
             <input
-              type="text"
+              type="file"
               name="image"
               id="image"
-              onChange={handleChange}
-              value={image}
+              onChange={handleImageChange}
+              // value={image}
               required
             ></input>
           </label>

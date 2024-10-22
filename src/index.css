@@ -63,8 +63,10 @@ section {
 }
 
 .addPropert-form input[type="text"],
+.addPropert-form input[type="file"],
 .addPropert-form input[type="number"],
 .updatePropert-form input[type="text"],
+.updatePropert-form input[type="file"],
 .updatePropert-form input[type="number"] {
   width: 90%;
   padding: 10px;
@@ -75,8 +77,10 @@ section {
 }
 
 .addPropert-form input[type="text"]:focus,
+.addPropert-form input[type="file"]:focus,
 .addPropert-form input[type="number"]:focus,
 .updatePropert-form[type="text"]:focus,
+.updatePropert-form[type="file"]:focus,
 .updatePropert-form[type="number"]:focus {
   border-color: #dbd3d3;
   outline: none;
@@ -113,7 +117,7 @@ img {
 }
 
 .update-btn,
-.delete-btn  {
+.delete-btn {
   width: 55%;
   padding: 10px;
   margin: 1rem;
