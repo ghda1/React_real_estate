@@ -1,65 +1,34 @@
-import  { useState } from "react";
+import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Properties from "./components/Properties";
-import propertiesData from "./data";
-import AddProperty from "./components/AddProperty";
-import UpdateProperty from "./components/UpdateProperty";
-
+import Home from "./pages/Home";
+import Header from "./components/Header";
+import AddProperty from "./pages/AddProperty";
+import UpdateProperty from "./pages/UpdateProperty";
 const App = () => {
-  const [allPropertiesData, setProperty] = useState(propertiesData);
-
-  const handleAddProperty = (newProperty) => {
-    setProperty((prevProperty) => {
-      return [...prevProperty, newProperty];
-    });
-  };
-
-  const handleDeleteProperty = (id) => {
-    const filterProperties = allPropertiesData.filter(
-      (property) => property.id !== id
-    );
-    setProperty(filterProperties);
-  };
-
-  const [updatePropertyData, setUpdatePropertyData] = useState(null);
-
-
-  const handleUpdateProperty = (updatePropertyData) => {
-    setUpdatePropertyData(updatePropertyData);
-  };
-  const handleUpdateDataProperty = (updateObject) => {
-    const findProperty = allPropertiesData.find(
-      (property) => property.id === updateObject.id
-    );
-    if (findProperty) {
-      findProperty.image = updateObject.image;
-      findProperty.location = updateObject.location;
-      findProperty.price = updateObject.price;
-      findProperty.title = updateObject.title;
-    }
-    setProperty(allPropertiesData);
-  };
-
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Header />,
+      children: [
+        {
+          path: "/",
+          element: <Home />,
+        },
+        {
+          path: "/addProperty",
+          element: <AddProperty />,
+        },
+        // {
+        //   path: "/updateProperty",
+        //   element: <UpdateProperty />,
+        // },
+      ],
+    },
+  ]);
   return (
     <>
-      <AddProperty onHandleAddProperty={handleAddProperty} />
-      {updatePropertyData && (
-        <UpdateProperty
-          updateProperty={updatePropertyData}
-          setUpdatePropertyData={setUpdatePropertyData}
-          onHandleUpdatePropertyData={handleUpdateDataProperty}
-        />
-      )}
-      <h2>Properties: </h2>
-      {propertiesData.length > 0 ? (
-        <Properties
-          properties={allPropertiesData}
-          onHandleDeleteProperty={handleDeleteProperty}
-          onHandleUpdateProperty={handleUpdateProperty}
-        />
-      ) : (
-        <h2>There is no properties.</h2>
-      )}
+      <RouterProvider router={router} />
     </>
   );
 };

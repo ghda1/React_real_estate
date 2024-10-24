@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import PropTypes from "prop-types";
 import { v4 as uuidv4 } from "uuid";
 
 import uploadImageToCloudinary from "../utility/UploadImage";
 
 const AddProperty = (props) => {
   const { onHandleAddProperty } = props;
-  const [property, setProperty] = useState({
+  const initialValue = {
     title: "",
     price: 0,
     image: "",
     location: "",
-  });
+  };
+
+  const [property, setProperty] = useState(initialValue);
+  const [errors, setErrors] = useState({});
 
   const handleChange = (event) => {
     setProperty((prevState) => {
@@ -23,8 +27,6 @@ const AddProperty = (props) => {
       return { ...prevState, [event.target.name]: event.target.files[0] };
     });
   };
-
-  const [errors, setErrors] = useState({});
 
   const isValidateForm = () => {
     const newErrors = {};
@@ -63,18 +65,12 @@ const AddProperty = (props) => {
   };
 
   const restValues = () => {
-    setProperty({
-      title: "",
-      price: 0,
-      image: "",
-      location: "",
-    });
+    setProperty(initialValue);
     setErrors({});
   };
 
   return (
-    <>
-      <h2>Add New Property: </h2>
+    <div className="addProperty">
       <form className="addPropert-form" onSubmit={submitHandler}>
         <div id="image-input">
           <label htmlFor="image">
@@ -135,7 +131,11 @@ const AddProperty = (props) => {
         </div>
         <button type="submit">Add Property</button>
       </form>
-    </>
+    </div>
   );
+};
+
+AddProperty.propTypes = {
+  onHandleAddProperty: PropTypes.func,
 };
 export default AddProperty;

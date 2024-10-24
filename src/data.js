@@ -1,6 +1,6 @@
 const propertiesData = [
   {
-    id: 1,
+    id: "1",
     title: "Luxury Beachfront Villa with Ocean Views",
     location: "Malibu, California",
     image:
@@ -8,7 +8,7 @@ const propertiesData = [
     price: 12500000,
   },
   {
-    id: 2,
+    id: "2",
     title: "Cozy Mountain Cabin in Secluded Forest",
     location: "Aspen, Colorado",
     image:
@@ -16,7 +16,7 @@ const propertiesData = [
     price: 1200,
   },
   {
-    id: 3,
+    id: "3",
     title: "Charming Downtown Loft with City Skyline View",
     location: "New York City, New York",
     image:
@@ -24,7 +24,7 @@ const propertiesData = [
     price: 2800,
   },
   {
-    id: 4,
+    id: "4",
     title: "Spacious Country Estate with Rolling Hills",
     location: "Tuscany, Italy",
     image:
@@ -32,7 +32,7 @@ const propertiesData = [
     price: 4750000,
   },
   {
-    id: 5,
+    id: "5",
     title: "Modern Condo in Bustling Urban Hub",
     location: "Tokyo, Japan",
     image:

@@ -4,10 +4,10 @@
 
 section {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap:wrap;
   justify-content: space-between;
-  gap: 10px;
-  margin: 20px auto;
+  gap: 5px;
+  margin: 20px ;
   max-width: 1200px;
 }
 
@@ -30,16 +30,30 @@ section {
   .card {
     width: calc(50% - 20px);
   }
+  nav {
+    gap: 3rem;
+    font-size: 22px;
+  }
 }
 
 @media (max-width: 600px) {
   .card {
     width: 100%;
   }
+  nav {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.addProperty,
+.updateProperty {
+  margin: 4rem;
 }
 
 .addPropert-form,
 .updatePropert-form {
+  margin-top: 2rem;
   max-width: 400px;
   padding: 20px;
   margin: 0 auto;
@@ -105,8 +119,8 @@ section {
 }
 
 img {
-  height: 300px;
-  width: 300px;
+  height: 370px;
+  width: 370px;
   margin-top: 2rem;
 }
 
@@ -116,8 +130,7 @@ img {
   margin: 1rem;
 }
 
-.update-btn,
-.delete-btn {
+article button {
   width: 55%;
   padding: 10px;
   margin: 1rem;
@@ -130,7 +143,28 @@ img {
   transition: background-color 0.3s;
 }
 
-.update-btn:hover,
-.delete-btn:hover {
+article button:hover {
   background-color: #acaaaa;
+}
+
+nav {
+  padding: 1rem;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  background-color: #f0edee;
+  font-size: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #6e6d6d;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
+}
+
+nav a:hover {
+  color: #d4d3d3;
 }

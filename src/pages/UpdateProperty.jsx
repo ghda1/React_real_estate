@@ -1,10 +1,14 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
+
 import uploadImageToCloudinary from "../utility/UploadImage";
 
 const UpdateProperty = (props) => {
   const { updateProperty, onHandleUpdatePropertyData, setUpdatePropertyData } =
     props;
+    
   const { id, image, title, price, location } = updateProperty;
+  const [errors, setErrors] = useState({});
 
   const handleChange = (event) => {
     setUpdatePropertyData((prevState) => {
@@ -17,8 +21,6 @@ const UpdateProperty = (props) => {
       return { ...prevState, [event.target.name]: event.target.files[0] };
     });
   };
-
-  const [errors, setErrors] = useState({});
 
   const isValidateForm = () => {
     const newErrors = {};
@@ -65,8 +67,7 @@ const UpdateProperty = (props) => {
   };
 
   return (
-    <>
-      <h2>Update Property: </h2>
+    <div className="updateProperty">
       <form className="updatePropert-form" onSubmit={submitHandler}>
         <div id="image-input">
           <label htmlFor="image">
@@ -126,7 +127,14 @@ const UpdateProperty = (props) => {
         </div>
         <button type="submit">Update Property</button>
       </form>
-    </>
+    </div>
   );
 };
+
+UpdateProperty.propTypes = {
+  updateProperty: PropTypes.object,
+  onHandleUpdatePropertyData: PropTypes.func,
+  setUpdatePropertyData: PropTypes.func,
+};
+
 export default UpdateProperty;
