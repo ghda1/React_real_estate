@@ -1,26 +1,34 @@
+import { useContext } from "react";
 import Card from "../Card";
 import PropTypes from "prop-types";
+import { PropertiesContext } from "../../Contexts/PropertiesContext";
+import { useNavigate } from "react-router-dom";
+import Image from "../Image";
+import Title from "../Title";
+import Price from "../Price";
 
 const Property = (props) => {
-  const { property, onHandleDeleteProperty, onHandleUpdateProperty } = props;
-  const { id, image, title, price, location } = property;
+  const { property } = props;
+  const { id, image, title, price } = property;
+  const { properties, setProperties } = useContext(PropertiesContext);
+  const navigate = useNavigate();
 
   const handleDeleteProperty = (id) => {
-    onHandleDeleteProperty(id);
+    const filterProperties = properties.filter(
+      (property) => property.id !== id
+    );
+    setProperties(filterProperties);
   };
-  const handleUpdateProperty = (updateProperty) => {
-    onHandleUpdateProperty(updateProperty);
-  };
-  
+
   return (
     <Card>
       <article>
-        <img src={image} alt={title} />
-        <h2>Title: {title}</h2>
-        <h3>Location: {location}</h3>
-        <h3 id="price">Price: {price}</h3>
+        <Image image={image} title={title} />
+        <Title title={title} />
+        <Price price={price} />
         <button
           className="details-btn"
+          onClick={() => navigate(`/propertyDetails/${id}`)}
         >
           Show Details
         </button>
@@ -29,7 +37,7 @@ const Property = (props) => {
         </button>
         <button
           className="update-btn"
-          onClick={() => handleUpdateProperty(property)}
+          onClick={() => navigate("/updateProperty", { state: property })}
         >
           Update
         </button>
@@ -41,7 +49,6 @@ const Property = (props) => {
 Property.propTypes = {
   property: PropTypes.object,
   onHandleDeleteProperty: PropTypes.func,
-  onHandleUpdateProperty: PropTypes.func,
 };
 
 export default Property;

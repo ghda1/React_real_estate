@@ -3,8 +3,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Header from "./components/Header";
-import AddProperty from "./pages/AddProperty";
-import UpdateProperty from "./pages/UpdateProperty";
+import AddProperty from "./pages/AddPropertyForm";
+import UpdateProperty from "./pages/UpdatePropertyForm";
+import { PropertiesProvider } from "./Contexts/PropertiesContext";
+import PropertyDetails from "./pages/PropertyDetails";
 const App = () => {
   const router = createBrowserRouter([
     {
@@ -19,17 +21,21 @@ const App = () => {
           path: "/addProperty",
           element: <AddProperty />,
         },
-        // {
-        //   path: "/updateProperty",
-        //   element: <UpdateProperty />,
-        // },
+        {
+          path: "/updateProperty",
+          element: <UpdateProperty />,
+        },
+        {
+          path: "/propertyDetails/:id",
+          element: <PropertyDetails />,
+        },
       ],
     },
   ]);
   return (
-    <>
+    <PropertiesProvider>
       <RouterProvider router={router} />
-    </>
+    </PropertiesProvider>
   );
 };
 

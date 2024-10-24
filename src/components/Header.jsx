@@ -1,15 +1,14 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const Header = () => {
   return (
     <>
       <nav id="nav">
-        <a href="/">Home</a>
-        <a href="/addProperty">Add Property</a>
-        <a href="/updateProperty">Update Property</a>
-        <a href="/SignUp">Sign Up</a>
-        <a href="/SignIn">Sign In</a>
-        <a href="/SignOut">Sign Out</a>
+        <Link to="/">Home</Link>
+        <Link to="/addProperty">Add Property</Link>
+        <Link to="/SignUp">Sign Up</Link>
+        <Link to="/SignIn">Sign In</Link>
+        <Link to="/SignOut">Sign Out</Link>
       </nav>
       <Outlet />
     </>

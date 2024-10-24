@@ -1,11 +1,11 @@
-import { useState } from "react";
-import PropTypes from "prop-types";
+import { useContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import uploadImageToCloudinary from "../utility/UploadImage";
+import { PropertiesContext } from "../Contexts/PropertiesContext";
+import { useNavigate } from "react-router-dom";
 
-const AddProperty = (props) => {
-  const { onHandleAddProperty } = props;
+const AddPropertyForm = () => {
   const initialValue = {
     title: "",
     price: 0,
@@ -15,6 +15,14 @@ const AddProperty = (props) => {
 
   const [property, setProperty] = useState(initialValue);
   const [errors, setErrors] = useState({});
+  const { setProperties } = useContext(PropertiesContext);
+  const navigate = useNavigate();
+
+  const handleAddProperty = (newProperty) => {
+    setProperties((prevProperty) => {
+      return [...prevProperty, newProperty];
+    });
+  };
 
   const handleChange = (event) => {
     setProperty((prevState) => {
@@ -59,8 +67,9 @@ const AddProperty = (props) => {
         location: property.location,
         price: property.price,
       };
-      onHandleAddProperty(newProperty);
+      handleAddProperty(newProperty);
       restValues();
+      navigate("/");
     }
   };
 
@@ -135,7 +144,4 @@ const AddProperty = (props) => {
   );
 };
 
-AddProperty.propTypes = {
-  onHandleAddProperty: PropTypes.func,
-};
-export default AddProperty;
+export default AddPropertyForm;

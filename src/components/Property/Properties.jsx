@@ -1,10 +1,15 @@
 import PropTypes from "prop-types";
 
 import Property from "./Property";
+import { useContext } from "react";
+import { PropertiesContext } from "../../Contexts/PropertiesContext";
 
+const Properties = () => {
+  const { properties } = useContext(PropertiesContext);
 
-const Properties = (props) => {
-  const { properties, onHandleDeleteProperty, onHandleUpdateProperty } = props;
+  if (properties.length == 0) {
+    return <h2>There is no properties</h2>;
+  }
 
   return (
     <>
@@ -12,8 +17,6 @@ const Properties = (props) => {
         {properties.map((property) => {
           return (
             <Property
-              onHandleDeleteProperty={onHandleDeleteProperty}
-              onHandleUpdateProperty={onHandleUpdateProperty}
               property={property}
               key={property.id}
             />
@@ -25,9 +28,7 @@ const Properties = (props) => {
 };
 
 Properties.propTypes = {
-  properties: PropTypes.object,
-  onHandleDeleteProperty: PropTypes.func,
-  onHandleUpdateProperty: PropTypes.func,
+  properties: PropTypes.array,
 };
 
 export default Properties;
