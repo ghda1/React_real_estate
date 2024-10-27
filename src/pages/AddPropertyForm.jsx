@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { useNavigate } from "react-router-dom";
 
 import uploadImageToCloudinary from "../utility/UploadImage";
 import { PropertiesContext } from "../Contexts/PropertiesContext";
-import { useNavigate } from "react-router-dom";
 
 const AddPropertyForm = () => {
   const initialValue = {
@@ -54,6 +54,10 @@ const AddPropertyForm = () => {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
+  const restValues = () => {
+    setProperty(initialValue);
+    setErrors({});
+  };
 
   const submitHandler = async (event) => {
     event.preventDefault();
@@ -73,69 +77,57 @@ const AddPropertyForm = () => {
     }
   };
 
-  const restValues = () => {
-    setProperty(initialValue);
-    setErrors({});
-  };
-
   return (
     <div className="addProperty">
       <form className="addPropert-form" onSubmit={submitHandler}>
         <div id="image-input">
-          <label htmlFor="image">
-            Image:
-            <input
-              type="file"
-              name="image"
-              id="image"
-              onChange={handleImageChange}
-              // value={property.image}
-              accept="image/*"
-              required
-            ></input>
-          </label>
+          <label htmlFor="image">Image:</label>
+          <input
+            type="file"
+            name="image"
+            id="image"
+            onChange={handleImageChange}
+            accept="image/*"
+            required
+          ></input>
           {errors.image && <p className="errors">{errors.image}</p>}
         </div>
         <div id="title-input">
-          <label htmlFor="title">
-            Title:
-            <input
-              type="text"
-              name="title"
-              id="title"
-              onChange={handleChange}
-              value={property.title}
-              required
-            ></input>
-          </label>
+          <label htmlFor="title">Title:</label>
+
+          <input
+            type="text"
+            name="title"
+            id="title"
+            onChange={handleChange}
+            value={property.title}
+            required
+          ></input>
           {errors.title && <p className="errors">{errors.title}</p>}
         </div>
         <div id="location-input">
-          <label htmlFor="location">
-            Location:
-            <input
-              type="text"
-              name="location"
-              id="location"
-              onChange={handleChange}
-              value={property.location}
-              required
-            ></input>
-          </label>
+          <label htmlFor="location">Location:</label>
+
+          <input
+            type="text"
+            name="location"
+            id="location"
+            onChange={handleChange}
+            value={property.location}
+            required
+          ></input>
           {errors.location && <p className="errors">{errors.location}</p>}
         </div>
         <div id="price-input">
-          <label htmlFor="price">
-            Price:
-            <input
-              type="number"
-              name="price"
-              id="price"
-              onChange={handleChange}
-              value={property.price}
-              required
-            ></input>
-          </label>
+          <label htmlFor="price">Price:</label>
+          <input
+            type="number"
+            name="price"
+            id="price"
+            onChange={handleChange}
+            value={property.price}
+            required
+          ></input>
           {errors.price && <p className="errors">{errors.price}</p>}
         </div>
         <button type="submit">Add Property</button>

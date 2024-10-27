@@ -6,7 +6,6 @@ import { PropertiesContext } from "../Contexts/PropertiesContext";
 function Home() {
   const { properties } = useContext(PropertiesContext);
 
-
   return (
     <div>
       {properties.length > 0 ? (

@@ -1,4 +1,4 @@
-const propertiesData = [
+let propertiesData = [
   {
     id: "1",
     title: "Luxury Beachfront Villa with Ocean Views",

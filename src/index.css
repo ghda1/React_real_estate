@@ -1,150 +1,5 @@
-#price {
-  color: rgb(208, 116, 116);
-}
-
-section {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 5px;
-  margin: 20px;
-  max-width: 1200px;
-}
-
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-  background-color: #f0edee;
-  margin-top: 2rem;
-  width: 400px;
-  padding: 16px;
-  text-align: center;
-  border-radius: 8px;
-}
-
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-
-@media (max-width: 900px) {
-  .card {
-    width: calc(50% - 20px);
-  }
-  nav {
-    gap: 3rem;
-    font-size: 22px;
-  }
-}
-
-@media (max-width: 600px) {
-  .card {
-    width: 100%;
-  }
-  nav {
-    flex-direction: column;
-    align-items: stretch;
-  }
-}
-
-.addProperty,
-.updateProperty {
-  margin: 4rem;
-}
-
-.addPropert-form,
-.updatePropert-form {
-  margin-top: 2rem;
-  max-width: 400px;
-  padding: 20px;
-  margin: 0 auto;
-  background-color: #f0edee;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
-}
-
-.addPropert-form div,
-.updatePropert-form div {
-  margin-bottom: 15px;
-}
-
-.addPropert-form label,
-.updatePropert-form label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 5px;
-  color: #333;
-}
-
-.addPropert-form input[type="text"],
-.addPropert-form input[type="file"],
-.addPropert-form input[type="number"],
-.updatePropert-form input[type="text"],
-.updatePropert-form input[type="file"],
-.updatePropert-form input[type="number"] {
-  width: 90%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  color: #333;
-}
-
-.addPropert-form input[type="text"]:focus,
-.addPropert-form input[type="file"]:focus,
-.addPropert-form input[type="number"]:focus,
-.updatePropert-form[type="text"]:focus,
-.updatePropert-form[type="file"]:focus,
-.updatePropert-form[type="number"]:focus {
-  border-color: #dbd3d3;
-  outline: none;
-}
-
-.addPropert-form button,
-.updatePropert-form button {
-  width: 95%;
-  padding: 10px;
-  background-color: #b7b7b7;
-  color: rgb(15, 14, 14);
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.addPropert-form button:hover,
-.updatePropert-form button:hover {
-  background-color: #9c9b9b;
-}
-
-img {
-  height: 370px;
-  width: 370px;
-  margin-top: 2rem;
-}
-
-.errors {
-  color: rgb(245, 118, 118);
-  font-size: 12px;
-  margin: 1rem;
-}
-
-article button {
-  width: 55%;
-  padding: 10px;
-  margin: 1rem;
-  background-color: #e1e0e0;
-  color: rgb(15, 14, 14);
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-article button:hover {
-  background-color: #acaaaa;
+.layout {
+  font-family: "Times New Roman", Times, serif;
 }
 
 nav {
@@ -167,4 +22,97 @@ nav a {
 
 nav a:hover {
   color: #d4d3d3;
+}
+
+#price {
+  color: rgb(208, 116, 116);
+}
+
+img {
+  height: 370px;
+  width: 370px;
+  margin-bottom: 2rem;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  background: #f0edee !important;
+  margin-top: 2rem;
+  width: 400px;
+  padding: 16px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.card button {
+  margin-right: 2rem;
+}
+.addProperty,
+.updateProperty,
+.signUp,
+.signIn {
+  margin: 4rem;
+}
+
+form {
+  margin-top: 2rem;
+  max-width: 400px;
+  padding: 20px;
+  margin: 0 auto;
+  background-color: #f0edee;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+form div {
+  margin-bottom: 15px;
+}
+
+form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+form input {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+}
+
+form input:focus {
+  border-color: #7b2121;
+  outline: none;
+}
+
+form button {
+  width: 95%;
+  padding: 10px;
+  background-color: #b7b7b7;
+  color: rgb(15, 14, 14);
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-bottom: 2rem;
+}
+
+form button:hover {
+  background-color: #9c9b9b;
+}
+
+.details-card{
+  display: flex;
+  justify-content: center;
 }

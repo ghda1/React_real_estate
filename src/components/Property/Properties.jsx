@@ -1,8 +1,9 @@
 import PropTypes from "prop-types";
+import { useContext } from "react";
 
 import Property from "./Property";
-import { useContext } from "react";
 import { PropertiesContext } from "../../Contexts/PropertiesContext";
+import { Col, Container, Row } from "react-bootstrap";
 
 const Properties = () => {
   const { properties } = useContext(PropertiesContext);
@@ -12,18 +13,17 @@ const Properties = () => {
   }
 
   return (
-    <>
-      <section>
+    <Container>
+      <Row>
         {properties.map((property) => {
           return (
-            <Property
-              property={property}
-              key={property.id}
-            />
+            <Col key={property.id} xs={12} md={6} lg={4}>
+              <Property property={property} />
+            </Col>
           );
         })}
-      </section>
-    </>
+      </Row>
+    </Container>
   );
 };
 

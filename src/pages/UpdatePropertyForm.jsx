@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import uploadImageToCloudinary from "../utility/UploadImage";
-import { useLocation, useNavigate } from "react-router-dom";
 import { PropertiesContext } from "../Contexts/PropertiesContext";
 
 const UpdatePropertyForm = () => {
@@ -58,6 +58,16 @@ const UpdatePropertyForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
+  const restValues = () => {
+    setUpdatePropertyData({
+      title: "",
+      price: 0,
+      image: "",
+      location: "",
+    });
+    setErrors({});
+  };
+
   const submitHandler = async (event) => {
     event.preventDefault();
 
@@ -76,15 +86,6 @@ const UpdatePropertyForm = () => {
       navigate("/");
     }
   };
-  const restValues = () => {
-    setUpdatePropertyData({
-      title: "",
-      price: 0,
-      image: "",
-      location: "",
-    });
-    setErrors({});
-  };
 
   return (
     <div className="updateProperty">
@@ -101,42 +102,38 @@ const UpdatePropertyForm = () => {
           {errors.image && <p className="errors">{errors.image}</p>}
         </div>
         <div id="title-input">
-          <label htmlFor="title">
-            Title:
-            <input
-              type="text"
-              name="title"
-              id="title"
-              onChange={handleChange}
-              value={title}
-            ></input>
-          </label>
+          <label htmlFor="title">Title:</label>
+          <input
+            type="text"
+            name="title"
+            id="title"
+            onChange={handleChange}
+            value={title}
+          ></input>
           {errors.title && <p className="errors">{errors.title}</p>}
         </div>
         <div id="location-input">
-          <label htmlFor="location">
-            Location:
-            <input
-              type="text"
-              name="location"
-              id="location"
-              onChange={handleChange}
-              value={location}
-            ></input>
-          </label>
+          <label htmlFor="location">Location:</label>
+
+          <input
+            type="text"
+            name="location"
+            id="location"
+            onChange={handleChange}
+            value={location}
+          ></input>
           {errors.location && <p className="errors">{errors.location}</p>}
         </div>
         <div id="price-input">
-          <label htmlFor="price">
-            Price:
-            <input
-              type="number"
-              name="price"
-              id="price"
-              onChange={handleChange}
-              value={price}
-            ></input>
-          </label>
+          <label htmlFor="price"> Price:</label>
+
+          <input
+            type="number"
+            name="price"
+            id="price"
+            onChange={handleChange}
+            value={price}
+          ></input>
           {errors.price && <p className="errors">{errors.price}</p>}
         </div>
         <button type="submit">Update Property</button>
