@@ -50,10 +50,8 @@ function SignIn() {
         restValues();
         navigate("/");
       } else {
-        console.log("error is here");
         errors.signIn = "Incorrect user name or password";
         setErrors(errors);
-        console.log(errors.signIn);
       }
     }
   };

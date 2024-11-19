@@ -94,7 +94,6 @@ const AddPropertyForm = () => {
         </div>
         <div id="title-input">
           <label htmlFor="title">Title:</label>
-
           <input
             type="text"
             name="title"
@@ -107,7 +106,6 @@ const AddPropertyForm = () => {
         </div>
         <div id="location-input">
           <label htmlFor="location">Location:</label>
-
           <input
             type="text"
             name="location"
